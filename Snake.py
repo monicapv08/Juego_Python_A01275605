@@ -9,8 +9,7 @@ Exercises
 """
 
 from random import randrange
-from turtle import *
-
+import turtle
 from freegames import square, vector
 
 food = vector(0, 0)
@@ -36,7 +35,7 @@ def move():
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
-        update()
+        turtle.update()  # Using explicit turtle reference
         return
 
     snake.append(head)
@@ -48,23 +47,23 @@ def move():
     else:
         snake.pop(0)
 
-    clear()
+    turtle.clear()  # Using explicit turtle reference
 
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
     square(food.x, food.y, 9, 'green')
-    update()
-    ontimer(move, 100)
+    turtle.update()  # Using explicit turtle reference
+    turtle.ontimer(move, 100)  # Using explicit turtle reference
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
+turtle.setup(420, 420, 370, 0)  # Using explicit turtle reference
+turtle.hideturtle()  # Using explicit turtle reference
+turtle.tracer(False)  # Using explicit turtle reference
+turtle.listen()  # Using explicit turtle reference
+turtle.onkey(lambda: change(10, 0), 'Right')
+turtle.onkey(lambda: change(-10, 0), 'Left')
+turtle.onkey(lambda: change(0, 10), 'Up')
+turtle.onkey(lambda: change(0, -10), 'Down')
 move()
-done()
+turtle.done()  # Using explicit turtle reference
